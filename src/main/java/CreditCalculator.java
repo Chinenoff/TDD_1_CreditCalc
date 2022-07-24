@@ -1,17 +1,29 @@
 public class CreditCalculator {
 
+    private float loanAmount;
+    private int loanPeriod;
+    private float interestRate;
+
+    public CreditCalculator(float loanAmount, int loanPeriod, float interestRate) {
+        this.loanAmount = loanAmount;
+        this.loanPeriod = loanPeriod;
+        this.interestRate = interestRate;
+    }
+
+
     // метод Рассчет месячного платежа
-    public static double monthlyPaymentCalculation() {
-        return 0.1;
+    public double monthlyPaymentCalculation() {
+        double percentMonth = interestRate / 100 / 12; // Ставка в месяц
+        return Math.round((double) ((loanAmount / loanPeriod) + (percentMonth * loanAmount)));
     }
 
     // метод Рассчет общей суммы к возврату в банк
-    public static double totalAmountCalculation() {
-        return 0.1;
+    public double totalAmountCalculation() {
+        return Math.round(monthlyPaymentCalculation() * loanPeriod);
     }
 
     // метод Рассчет переплаты за весь период
-    public static double calculationOfOverpayment() {
-        return 0.1;
+    public double calculationOfOverpayment() {
+        return Math.round(totalAmountCalculation() - loanAmount);
     }
 }

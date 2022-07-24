@@ -6,9 +6,9 @@ public class TestMonthlyPaymentCalculation {
     @Test
     @DisplayName("Тест Рассчета месячного платежа")
     public void testMonthlyPaymentCalculation() {
-        //IncomeTaxType incomeTaxTypeObj = new IncomeTaxType();
+        CreditCalculator testCreditCalculator = new CreditCalculator(120000, 12, 12);
         double resultMonthlyPaymentCalculation =
-                CreditCalculator.monthlyPaymentCalculation (100000, 12, 20);
-        Assertions.assertEquals(resultMonthlyPaymentCalculation, (double) 12000);
+                testCreditCalculator.monthlyPaymentCalculation();
+        Assertions.assertEquals(resultMonthlyPaymentCalculation, (double) 11200);
     }
 }

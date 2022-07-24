@@ -6,8 +6,9 @@ public class TestTotalAmountCalculation {
     @Test
     @DisplayName("Тест Рассчета общей суммы к возврату в банк")
     public void testTotalAmountCalculation() {
+        CreditCalculator testCreditCalculator = new CreditCalculator(120000, 12, 12);
         double resultTotalAmountCalculation =
-                CreditCalculator.totalAmountCalculation (100000, 12, 20);
-        Assertions.assertEquals(resultTotalAmountCalculation, (double) 120000);
+                testCreditCalculator.totalAmountCalculation();
+        Assertions.assertEquals(resultTotalAmountCalculation, (double) 134400);
     }
 }
